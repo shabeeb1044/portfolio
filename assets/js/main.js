@@ -232,3 +232,97 @@
   new PureCounter();
 
 })()
+function getdetailes(){
+  let name = document.getElementById("userName").value;
+  let email = document.getElementById("userEmail").value;
+  let number =document.getElementById("userNumber").value;
+  let subject =document.getElementById("userSubject").value;
+  console.log(name);
+  console.log(email);
+  console.log(number);
+  console.log(subject);
+
+
+}
+$(document).ready(function(){
+  $("#nameError").hide()
+  $("#emailError").hide()
+  $("#numberError").hide()
+})
+
+
+function checkName() {
+  let name =$("#userName").val();
+
+let pattern =/^[a-zA-Z]/;
+if(name==null || name==''){
+  $("#nameError").show();
+  $("#nameError").html("Enter the your name ");
+  $("#userName").css("border-bottom","solid 2px #FF0000");
+  return false;
+}
+else if(name.match(pattern)){ 
+  
+$("#nameError").hide();
+$("#userName").css("border-bottom","solid 2px green")
+}else{
+  $("#nameError").show();
+  $("#nameError").html("Please Enter Your Valid Name");
+  $("#userName").css("border-bottom","solid 2px #FF0000");
+}
+}
+function checkEmail(){
+  let email = $("#userEmail").val();
+      let emailPattern = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
+
+      if(email == null || email == ''){
+      $("#emailError").show();
+      $("#emailError").html("Please Enter Your Email");
+      $("#userEmail").css("border-bottom","solid 2px #FF0000");
+      
+      return false;
+
+    }else if(email.match(emailPattern)){
+      $("#emailError").hide();
+      $("#userEmail").css("border-bottom","solid 2px #00FF00");
+  
+      return true;
+  
+    }else{
+      $("#emailError").show();
+      $("#emailError").html("Please Enter Your Valid Email");
+      $("#userEmail").css("border-bottom","solid 2px #FF0000");
+
+      return false;
+  }
+
+    }
+function checkPhoneNumber() {
+  let number =$("#userNumber").val();
+  $("#userNumber").attr("maxlength",10);
+  let pattern =/^[0-9]/;
+  
+  if(number==null || number==''){
+ $("#numberError").html("Please Enter you phone number ");
+ $("#userNumber").css("border-bottom","solid 2px red");
+ return false;
+  }else if(number.length<10 ){
+$("#numberError").show();
+$("#numberError").html("Please Enter Valid Number");
+$("#userNumber").css("border-bottom","solid 2px red");
+  }
+  else if(number.match(pattern)){
+$("#numberError").hide();
+$("#userNumber").css("border-bottom","solid px green")
+  return true;
+  }else{
+    $("#numberError").show()
+    $("#numberError").html("please Enter the valid number");
+    $("#userNumber").css("border-bottom","solid 2px red");
+  }
+}
+function subject() {
+  
+}
+
