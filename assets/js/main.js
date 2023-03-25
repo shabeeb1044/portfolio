@@ -231,16 +231,17 @@
    */
   new PureCounter();
 
-})()
+})();
+
 function getdetailes(){
-  let name = document.getElementById("userName").value;
-  let email = document.getElementById("userEmail").value;
-  let number =document.getElementById("userNumber").value;
-  let subject =document.getElementById("userSubject").value;
-  console.log(name);
-  console.log(email);
-  console.log(number);
-  console.log(subject);
+  // let name = document.getElementById("userName").value;
+  // let email = document.getElementById("userEmail").value;
+  // let number =document.getElementById("userNumber").value;
+  // let subject =document.getElementById("userSubject").value;
+  // console.log(name);
+  // console.log(email);
+  // console.log(number);
+  // console.log(subject);
 
 
 }
@@ -264,11 +265,13 @@ if(name==null || name==''){
 else if(name.match(pattern)){ 
   
 $("#nameError").hide();
-$("#userName").css("border-bottom","solid 2px green")
+$("#userName").css("border-bottom","solid 2px #00FF00")
+return true
 }else{
   $("#nameError").show();
   $("#nameError").html("Please Enter Your Valid Name");
   $("#userName").css("border-bottom","solid 2px #FF0000");
+  return false;
 }
 }
 function checkEmail(){
@@ -311,18 +314,63 @@ function checkPhoneNumber() {
 $("#numberError").show();
 $("#numberError").html("Please Enter Valid Number");
 $("#userNumber").css("border-bottom","solid 2px red");
+return false
   }
   else if(number.match(pattern)){
 $("#numberError").hide();
-$("#userNumber").css("border-bottom","solid px green")
+$("#userNumber").css("border-bottom","solid 2px #00FF00")
   return true;
   }else{
     $("#numberError").show()
     $("#numberError").html("please Enter the valid number");
     $("#userNumber").css("border-bottom","solid 2px red");
+    return false
+}
+  }
+  
+function userSub() {
+  let x = $("#userSubject").val();
+  if (x==null || x=='') {
+    $("#subError").show()
+    $("#subError").html("Please Enter the subject")
+    $("#userSubject").css("border-bottom","solid 2px red");
+    return false
+  }else{
+    $("#subError").hide();
+    $("#userSubject").css("border-bottom","solid 2px #00FF00");
+    return true
   }
 }
-function subject() {
-  
-}
 
+$("#contactForm").submit(function(e){
+  e.preventDefault();
+  if(checkName()==true && checkEmail()==true && checkPhoneNumber()==true && userSub()==true){
+$.ajax(
+   {
+    cache: false,
+    dataType: "jsonp",
+    data:$("#contactForm").serialize(),
+    async: true,
+    crossDomain: true,
+    url: "https://script.google.com/macros/s/AKfycbyHPHeVQbE-C-AygRRDw2EpV7QiORDKHJkHAw-2ILeGbmWgkUiNtsYa0jN28vQc1SQX/exec",
+    method: "POST",
+    headers: {
+    "Access-Control-Allow-Origin":"*",
+    },
+success:function (response){
+
+  console.log(response);
+  $("#successModal").modal('show');
+
+  $("#userName").val("").css("border-bottom","solid 0px");
+
+  $("#userEmail").val("").css("border-bottom","solid 0px");
+
+  $("#userNumber").val("").css("border-bottom","solid 0px");
+
+  $("#userSub").val("").css("border-bottom","solid 0px");
+alert("Sucessfully submited  ");
+}
+})
+  }
+} )

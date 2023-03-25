@@ -379,7 +379,7 @@
                       </h5>
                     </div>
                     <div>
-                      <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                      <form id="contactForm" method="post" role="form" class="php-email-form">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
@@ -395,13 +395,14 @@
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject "  placeholder="Phone Number " required id="userNumber" onkeyup="checkPhoneNumber()" oninput="this.value =this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g,'$1');">
+                              <input type="text" class="form-control" name="number "  placeholder="Phone Number " required id="userNumber" onkeyup="checkPhoneNumber()" oninput="this.value =this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g,'$1');">
                               <span id="numberError"> </span>  
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <textarea class="form-control" name="subject" rows="5" placeholder="subject" required id="userSubject" onkeyup="subject()" onclick="this.value"></textarea>
+                              <textarea class="form-control" name="subject" rows="5" placeholder="subject" required id="userSubject" onkeyup="userSub()" onclick="this.value"></textarea>
+                              <span id="subError"> </span>
                             </div>
                           </div>
                           <div class="col-md-12 text-center my-3">
@@ -447,6 +448,7 @@
                         <li><a href=""><span class="ico-circle"><i class="bi bi-instagram"></i></span></a></li>
                         <li><a href=""><span class="ico-circle"><i class="bi bi-twitter"></i></span></a></li>
                         <li><a href=""><span class="ico-circle"><i class="bi bi-linkedin"></i></span></a></li>
+                        
                       </ul>
                     </div>
                   </div>
@@ -473,7 +475,7 @@
               You can delete the links only if you purchased the pro version.
               Licensing information: https://bootstrapmade.com/license/
               Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=DevFolio
-            -->
+              -->
             </div>
           </div>
         </div>
@@ -483,12 +485,31 @@
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js" integrity="sha256-a2yjHM4jnF9f54xUQakjZGaqYs/V1CYvWpoqZzC2/Bw=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
   <script src="assets/js/main.js"></script>
 
