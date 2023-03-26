@@ -5,13 +5,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Shabeeb's Portfolio</title>
+  <title>Shabeeb Portfolio</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png?fssdf" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="./assets/img/favicon.ico" rel="icon">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -379,30 +378,31 @@
                       </h5>
                     </div>
                     <div>
-                      <form id="contactForm" method="post" role="form" class="php-email-form">
+                      <form class="php-email-form" action="#" id="contactForm">
+                      
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" name="name" class="form-control" onkeyup="checkName()"  placeholder="Your Name" required id="userName"  oninput="this.value= this.value.replace(/[^a-z A-Z.]/g,'').replace(/(\..*)\./g,'$1');">
+                              <input type="text" name="name" class="form-control" onkeyup="validateName()"  placeholder="Your Name" required id="fullName"  oninput="this.value= this.value.replace(/[^a-z A-Z.]/g,'').replace(/(\..*)\./g,'$1');">
                               <span id="nameError"> </span>   
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="email" class="form-control" name="email"  placeholder="Your Email" onkeyup="checkEmail()" required id="userEmail">
+                              <input type="email" class="form-control" name="email"  placeholder="Your Email" onkeyup="validateEmail()" required id="email">
                               <span id="emailError"> </span>  
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="number "  placeholder="Phone Number " required id="userNumber" onkeyup="checkPhoneNumber()" oninput="this.value =this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g,'$1');">
+                              <input type="text" class="form-control" name="number"  placeholder="Phone Number " required id="contactNumber" onkeyup="validateNumber()" oninput="this.value =this.value.replace(/[^0-9]/g, '').replace(/(\..*)\./g,'$1');">
                               <span id="numberError"> </span>  
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <textarea class="form-control" name="subject" rows="5" placeholder="subject" required id="userSubject" onkeyup="userSub()" onclick="this.value"></textarea>
-                              <span id="subError"> </span>
+                              <textarea class="form-control" name="subject" rows="5" placeholder="subject" required id="message" onkeyup="validateText()" onclick="this.value"></textarea>
+                              <span id="textError"> </span>
                             </div>
                           </div>
                           <div class="col-md-12 text-center my-3">
@@ -486,24 +486,48 @@
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+ <!-- Modal success-->
+ <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel">Verification Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
-        ...
+      Form Successfully Completed
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
 </div>
+<!-- End modal sucess -->
+
+<!--Something Error  -->
+<div class="modal fade" id="ErrorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Verification Message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      Something Error
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Something Error -->
+
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -512,7 +536,6 @@
   <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 
   <script src="assets/js/main.js"></script>
-
 </body>
 
 </html>
