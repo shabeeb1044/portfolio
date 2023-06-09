@@ -315,7 +315,7 @@ return false;
   $("#numberError").html("Please Enter Valid Number");
   $("#contactNumber").css("border-bottom","solid 2px #FF0000");
 
-return true;
+return false;
 
 }else if(number.match(numberPattern)){
   $("#numberError").hide();
@@ -355,7 +355,7 @@ return true;
 }
 
 $("#contactForm").submit(function(e){
-    e.preventDefault();
+    e.preventDefault(); preventDefault
 
     if(validateName() == true && validateEmail() == true && validateNumber() == true && validateText() == true){
       $.ajax({
